@@ -31,11 +31,23 @@ def new_deal(request):
         e_date = request.POST["e_date"]
         d_code = request.POST["d_code"]
         category = request.POST["category"]
+        img_url = request.POST["img_url"]
 
         user = User.objects.get(id=request.user.id)
         print(user)
         #try:
-        deal = Deal(creator=user, url=deal_url, heading=heading, description=description, price=price, start_date=s_date, end_date=e_date, category=category, d_code=d_code)
+        deal = Deal(
+            creator=user,
+            url=deal_url,
+            heading=heading,
+            description=description,
+            price=price,
+            start_date=s_date,
+            end_date=e_date,
+            category=category,
+            d_code=d_code,
+            image_url=img_url
+            )
         deal.save()
         #except IntegrityError:
         #    return render(request, "dealhunter/newdeal.html", {
@@ -103,3 +115,20 @@ def register(request):
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("index"))
+
+
+def dealview(request, deal_id):
+
+    deal = Deal.objects.get(id=deal_id)
+
+    return render(request, "dealhunter/dealview.html", {
+        "deal" : deal
+    })
+
+def profileview(request, profile_id):
+
+        profile = User.objects.get(id=request.user.id)
+
+        return render(request, "dealhunter/profileview.html", {
+        "profile" : profile
+    })

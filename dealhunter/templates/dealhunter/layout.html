@@ -47,6 +47,7 @@
                       </form>
                       {% if user.is_authenticated %}
                         <a class="btn btn-light action-button" role="button" href="{% url 'logout_view' %}">Log Out</a></div>
+                          <a href="{% url 'profileview' user.id %}"><p id="user_logged"> {{user.username}} </p></a>
                       {% else %}
                         <a class="btn btn-light action-button" role="button" href="{% url 'login' %}">Log In</a></div>
                       {% endif %}

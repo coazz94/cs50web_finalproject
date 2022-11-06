@@ -26,6 +26,8 @@ class Deal(models.Model):
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
     category = models.CharField(max_length=15, default="not_defined")
+    image_url = models.URLField(null=True, blank=True)
+
 
     def __str__(self):
         return f"User: {self.creator} created this Deal {self.heading} on {self.end_date}"
@@ -44,3 +46,11 @@ class Deal(models.Model):
             "category": self.category,
 
         }
+        
+    @property
+    # Call here the function to get the image_url not directly the image url
+    def image_link(self):
+        if self.image_url:
+            return self.image_url
+        else:
+            return "https://wichtech.com/wp-content/uploads/2016/09/noimg.jpg"    

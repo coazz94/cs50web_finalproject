@@ -38,6 +38,16 @@ body {
 }
 
 
+#user_logged{
+  margin-left: 5%;
+  margin-top: 2%;
+  box-sizing: border-box;
+  display: inline-block;
+  border: 1px solid #CCC;
+  padding: 6px 6px;
+}
+
+
 /*-------------- Cards --------------*/
 
 body{background:#eee}
@@ -322,3 +332,4 @@ button:focus{-moz-box-shadow: none !important;-webkit-box-shadow: none !importan
           transform: translate(0px, -10px) scale(1.2);
 }
 /*-------------- Buttons --------------*/
+
